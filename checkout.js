@@ -3,13 +3,14 @@ const request = require('request');
 
 let username = 'vt000';
 let password = 'passowrd';
+let user_id = 'get from web';
 
 function checkin(token) {
 	const checkin_url = "https://femascloud.com/vizuro/users/clock_listing";
 
 	const requestBody = {
-	  'data[ClockRecord][user_id]': '7',
-	  'data[AttRecord][user_id]': '7',
+	  'data[ClockRecord][user_id]': user_id,
+	  'data[AttRecord][user_id]': user_id,
 	  'data[ClockRecord][shift_id]': '2',
 	  'data[ClockRecord][period]': '1',
 	  'data[ClockRecord][clock_type]': 'E',
