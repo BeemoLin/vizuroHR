@@ -1,6 +1,9 @@
 const qs = require('querystring');
 const request = require('request');
 
+let username = 'vt000';
+let password = 'passowrd';
+
 function checkin(token) {
 	const checkin_url = "https://femascloud.com/vizuro/users/clock_listing";
 
@@ -16,7 +19,7 @@ function checkin(token) {
 
 	let payload = qs.stringify(requestBody);
 
-	let cookies = "femasUid=vt006;";
+	let cookies = `femasUid=${username};`;
 	cookies+= `vizuro=${token};`;
 	cookies+= "setTopMenu=;";
 	cookies+= "menuItem=4;";
@@ -41,8 +44,8 @@ function login() {
 	const login_url = "https://femascloud.com/vizuro/Accounts/login";
 
 	const requestBody = {
-	  'data[Account][username]': 'vt006',
-	  'data[Account][passwd]': 'Oo454053',
+	  'data[Account][username]': username,
+	  'data[Account][passwd]': password,
 	  'data[remember]': '0'
 	}
 
