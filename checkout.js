@@ -4,6 +4,8 @@ const request = require('request');
 let username = 'vt000';
 let password = 'passowrd';
 let user_id = 'get from web';
+let delayMinMinute = 1;
+let delayMaxMinute = 15;
 
 function checkin(token) {
 	const checkin_url = "https://femascloud.com/vizuro/users/clock_listing";
@@ -16,7 +18,7 @@ function checkin(token) {
 	  'data[ClockRecord][clock_type]': 'E',
 	  'data[ClockRecord][latitude]': '',
 	  'data[ClockRecord][longitude]': ''
-	}
+	};
 
 	let payload = qs.stringify(requestBody);
 
@@ -26,7 +28,7 @@ function checkin(token) {
 	cookies+= "menuItem=4;";
 	cookies+= "menuBlock=;";
 	cookies+= "lifeTimePointvizuro=1581493240;";
-	cookies+= "femasRem=1"
+	cookies+= "femasRem=1";
 
 	request.post({
 		headers: {
@@ -48,7 +50,7 @@ function login() {
 	  'data[Account][username]': username,
 	  'data[Account][passwd]': password,
 	  'data[remember]': '0'
-	}
+	};
 
 	let payload = qs.stringify(requestBody);
 
@@ -59,12 +61,32 @@ function login() {
 	}, function(error, response, body){
 		console.log(body);
 		let token = `${response.headers["set-cookie"]}`;
-		token = token.split(";")[0].split("=")[1]
+		token = token.split(";")[0].split("=")[1];
 		console.log(token);
 
 		checkin(token);
 	});
 }
 
-
 login();
+
+// random time
+const delay = function(r,s){
+  s = s * 1000;
+  return new Promise(function(resolve,reject){
+    setTimeout(function(){
+      resolve([r,s]);
+    },s);
+  });
+};
+
+function getRandomMinute(min,max){
+  let minMinute = min * 60;
+  let maxMinute = max * 60;
+  return Math.floor(Math.random()*(maxMinute-minMinute+1))+minMinute;
+}
+
+let delayTime = getRandomMinute(delayMinMinute, delayMaxMinute);
+console.log("delayTime:", delayTime);
+
+delay(login(), delayTime);

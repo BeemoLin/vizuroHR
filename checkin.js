@@ -4,6 +4,8 @@ const request = require('request');
 let username = 'vt000';
 let password = 'passowrd';
 let user_id = 'get from web';
+let delayMinMinute = 1;
+let delayMaxMinute = 15;
 
 function checkin(token) {
 	const checkin_url = "https://femascloud.com/vizuro/users/clock_listing";
@@ -16,7 +18,7 @@ function checkin(token) {
 	  'data[ClockRecord][clock_type]': 'S',
 	  'data[ClockRecord][latitude]': '',
 	  'data[ClockRecord][longitude]': ''
-	}
+	};
 
 	let payload = qs.stringify(requestBody);
 
@@ -48,7 +50,7 @@ function login() {
 	  'data[Account][username]': username,
 	  'data[Account][passwd]': password,
 	  'data[remember]': '0'
-	}
+	};
 
 	let payload = qs.stringify(requestBody);
 
@@ -66,5 +68,23 @@ function login() {
 	});
 }
 
+// random time
+const delay = function(r,s){
+  s = s * 1000;
+  return new Promise(function(resolve,reject){
+    setTimeout(function(){
+      resolve([r,s]);
+    },s);
+  });
+};
 
-login();
+function getRandomMinute(min,max){
+  let minMinute = min * 60;
+  let maxMinute = max * 60;
+  return Math.floor(Math.random()*(maxMinute-minMinute+1))+minMinute;
+}
+
+let delayTime = getRandomMinute(delayMinMinute, delayMaxMinute);
+console.log("delayTime:", delayTime);
+
+delay(login(), delayTime);
