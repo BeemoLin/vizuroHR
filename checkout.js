@@ -10,7 +10,7 @@ let delayMaxMinute = process.env["DELAY_MAX_MINUTE"];
 
 console.log("username: ", username);
 
-function checkin(token) {
+function checkout(token) {
 	const checkin_url = "https://femascloud.com/vizuro/users/clock_listing";
 
 	const requestBody = {
@@ -67,11 +67,9 @@ function login() {
 		token = token.split(";")[0].split("=")[1];
 		console.log(token);
 
-		checkin(token);
+    checkout(token);
 	});
 }
-
-login();
 
 // random time
 const delay = function(r,s){
