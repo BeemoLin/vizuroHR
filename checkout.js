@@ -1,11 +1,14 @@
+require('dotenv').config();
 const qs = require('querystring');
 const request = require('request');
 
-let username = 'vt000';
-let password = 'passowrd';
-let user_id = 'get from web';
-let delayMinMinute = 1;
-let delayMaxMinute = 15;
+let username = process.env["USERNAME"];
+let password = process.env["PASSWORD"];
+let user_id = process.env["USER_ID"];
+let delayMinMinute = process.env["DELAY_MIN_MINUTE"];
+let delayMaxMinute = process.env["DELAY_MAX_MINUTE"];
+
+console.log("username: ", username);
 
 function checkin(token) {
 	const checkin_url = "https://femascloud.com/vizuro/users/clock_listing";
