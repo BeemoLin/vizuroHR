@@ -4,8 +4,8 @@ const request = require('request');
 let username = 'vt000';
 let password = 'passowrd';
 let user_id = 'get from web';
-let delayMinMinute = 1;
-let delayMaxMinute = 15;
+let delayMinMinute = 0.1;
+let delayMaxMinute = 0.2;
 
 function checkin(token) {
 	const checkin_url = "https://femascloud.com/vizuro/users/clock_listing";
@@ -73,7 +73,8 @@ const delay = function(r,s){
   s = s * 1000;
   return new Promise(function(resolve,reject){
     setTimeout(function(){
-      resolve([r,s]);
+      r();
+      resolve(s);
     },s);
   });
 };
@@ -87,4 +88,4 @@ function getRandomMinute(min,max){
 let delayTime = getRandomMinute(delayMinMinute, delayMaxMinute);
 console.log("delayTime:", delayTime);
 
-delay(login(), delayTime);
+delay(login, delayTime);

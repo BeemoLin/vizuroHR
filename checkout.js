@@ -75,7 +75,8 @@ const delay = function(r,s){
   s = s * 1000;
   return new Promise(function(resolve,reject){
     setTimeout(function(){
-      resolve([r,s]);
+      r();
+      resolve(s);
     },s);
   });
 };
@@ -89,4 +90,4 @@ function getRandomMinute(min,max){
 let delayTime = getRandomMinute(delayMinMinute, delayMaxMinute);
 console.log("delayTime:", delayTime);
 
-delay(login(), delayTime);
+delay(login, delayTime);
