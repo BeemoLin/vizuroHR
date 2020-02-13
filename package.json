@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/BeemoLin/vizuroHR/issues"
   },
-  "homepage": "https://github.com/BeemoLin/vizuroHR#readme"
+  "homepage": "https://github.com/BeemoLin/vizuroHR#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2"
+  }
 }
