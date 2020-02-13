@@ -4,8 +4,8 @@ const request = require('request');
 let username = 'vt000';
 let password = 'passowrd';
 let user_id = 'get from web';
-let delayMinMinute = 0.1;
-let delayMaxMinute = 0.2;
+let delayMinMinute = 1;
+let delayMaxMinute = 15;
 
 function checkin(token) {
 	const checkin_url = "https://femascloud.com/vizuro/users/clock_listing";
