@@ -29,7 +29,7 @@
  
  `crontab -e`
  
- - 每天9點與18點執行；js 會自動判斷是不是平常日，所以 crontab 每天執行就好
+ - 每天9點30分與18點30分執行；js 會自動判斷是不是平常日，所以 crontab 每天執行就好
  
- `00 9,18 * * * node /home/vizuro/你的資料夾/vizuroHR/checkin.js`
+ `30 9,18 * * *  cd /home/vizuro/你的資料夾/vizuroHR/ && /usr/bin/node /home/vizuro/你的資料夾/vizuroHR/checkin.js >>/home/vizuro/你的資料夾/vizuroHR/checkin.log 2>&1`
 
