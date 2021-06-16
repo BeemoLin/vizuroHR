@@ -31,4 +31,4 @@
  
  - 每天9點與18點執行；js 會自動判斷是不是平常日，所以 crontab 每天執行就好
 
-30 09,18 * * * cd $PROJECT_DIR/vizuroHR/ && /usr/bin/node checkin.js >>checkin.log 2>&1 
+`30 09,18 * * * cd $PROJECT_DIR/vizuroHR/ && /usr/bin/node checkin.js >>checkin.log 2>&1`
