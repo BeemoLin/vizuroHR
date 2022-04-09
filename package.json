@@ -18,7 +18,7 @@
   "homepage": "https://github.com/BeemoLin/vizuroHR#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "querystring": "^0.2.0",
     "request": "^2.88.2"
   }
